@@ -5,7 +5,7 @@ if ( ! defined( "WHMCS" ) ) {
 
 function _123pay_MetaData() {
 	return array(
-		'DisplayName'                => 'سامانه پرداخت اینترنتی یک دو سه پی',
+		'DisplayName'                => 'سامانه پرداخت یک دو سه پی',
 		'APIVersion'                 => '1.0',
 		'DisableLocalCredtCardInput' => false,
 		'TokenisedStorage'           => false
@@ -16,7 +16,7 @@ function _123pay_config() {
 	$configarray = array(
 		"FriendlyName" => array(
 			"Type"  => "System",
-			"Value" => "سامانه پرداخت اینترنتی یک دو سه پی"
+			"Value" => "سامانه پرداخت یک دو سه پی"
 		),
 		"merchant_id"  => array(
 			"FriendlyName" => "merchant_id",
