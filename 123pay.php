@@ -8,7 +8,7 @@ require_once __DIR__ . '/includes/123pay.php';
 
 $merchant_id  = $_POST['merchant_id'];
 $amount       = ( $_POST['currencies'] == 'Toman' ) ? ( (int) ( $_POST['amount'] ) ) * 10 : ( (int) ( $_POST['amount'] ) );
-$callback_url = $_POST['systemurl'] . 'modules/gateways/callback/123pay.php?invoiceid=' . $_POST['invoiceid'];
+$callback_url = urlencode( $_POST['systemurl'] . 'modules/gateways/callback/123pay.php?invoiceid=' . $_POST['invoiceid'] );
 
 if ( ! extension_loaded( 'curl' ) ) {
 	echo 'خطا : curl فعال نیست';
