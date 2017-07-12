@@ -4,7 +4,7 @@
 </head>
 <body style="text-align: center; color: #ff0000; margin-top: 10%">
 <?php
-require_once __DIR__ . '/includes/123pay.php';
+require_once __DIR__ . '/includes/ir123pay.php';
 
 $merchant_id  = $_POST['merchant_id'];
 $amount       = ( $_POST['currencies'] == 'Toman' ) ? ( (int) ( $_POST['amount'] ) ) * 10 : ( (int) ( $_POST['amount'] ) );

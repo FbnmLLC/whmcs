@@ -7,9 +7,9 @@ if ( file_exists( __DIR__ . '/../../../init.php' ) ) {
 require_once __DIR__ . '/../../../includes/functions.php';
 require_once __DIR__ . '/../../../includes/gatewayfunctions.php';
 require_once __DIR__ . '/../../../includes/invoicefunctions.php';
-require_once __DIR__ . '/../../../includes/123pay.php';
+require_once __DIR__ . '/../../../includes/ir123pay.php';
 
-$GATEWAY = getGatewayVariables( '_123pay' );
+$GATEWAY = getGatewayVariables( 'ir123pay' );
 if ( ! $GATEWAY['type'] ) {
 	die( 'Module Not Activated' );
 }
@@ -30,7 +30,7 @@ if ( $State == 'OK' ) {
 
 		if ( $verifiedAmount == $amount ) {
 			checkCbTransID( $RefNum );
-			addInvoicePayment( $invoiceid, $RefNum, $verifiedAmount, 0, '_123pay' );
+			addInvoicePayment( $invoiceid, $RefNum, $verifiedAmount, 0, 'ir123pay' );
 			logTransaction( $GATEWAY["name"], array_merge( $_REQUEST, array(
 				'status'  => $result->status,
 				'message' => $result->message,

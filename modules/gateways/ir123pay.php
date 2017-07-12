@@ -3,7 +3,7 @@ if ( ! defined( "WHMCS" ) ) {
 	die( "This file cannot be accessed directly" );
 }
 
-function _123pay_MetaData() {
+function ir123pay_MetaData() {
 	return array(
 		'DisplayName'                => 'سامانه پرداخت یک دو سه پی',
 		'APIVersion'                 => '1.0',
@@ -12,7 +12,7 @@ function _123pay_MetaData() {
 	);
 }
 
-function _123pay_config() {
+function ir123pay_config() {
 	$configarray = array(
 		"FriendlyName" => array(
 			"Type"  => "System",
@@ -33,7 +33,7 @@ function _123pay_config() {
 	return $configarray;
 }
 
-function _123pay_link( $params ) {
+function ir123pay_link( $params ) {
 	$merchant_id = trim( $params['merchant_id'] );
 	$amount      = $params['amount'];
 	$systemurl   = $params['systemurl'];
@@ -41,7 +41,7 @@ function _123pay_link( $params ) {
 	$invoiceid   = $params['invoiceid'];
 	$currencies  = $params['Currencies'];
 	$code        = '
-			<form action="./123pay.php" method="POST">
+			<form action="./ir123pay.php" method="POST">
 				<input type="hidden" name="merchant_id" value="' . $merchant_id . '" />
 				<input type="hidden" name="amount" value="' . $amount . '" />
 				<input type="hidden" name="systemurl" value="' . $systemurl . '" />
