@@ -8,7 +8,7 @@ require_once __DIR__ . '/includes/ir123pay.php';
 
 $merchant_id  = $_POST['merchant_id'];
 $amount       = ( $_POST['currencies'] == 'Toman' ) ? ( (int) ( $_POST['amount'] ) ) * 10 : ( (int) ( $_POST['amount'] ) );
-$callback_url = urlencode( $_POST['systemurl'] . 'modules/gateways/callback/123pay.php?invoiceid=' . $_POST['invoiceid'] );
+$callback_url = urlencode( $_POST['systemurl'] . 'modules/gateways/callback/ir123pay.php?invoiceid=' . $_POST['invoiceid'] );
 
 if ( ! extension_loaded( 'curl' ) ) {
 	echo 'خطا : curl فعال نیست';
@@ -18,7 +18,12 @@ if ( ! extension_loaded( 'curl' ) ) {
 $response = create( $merchant_id, $amount, $callback_url );
 $result   = json_decode( $response );
 if ( $result->status ) {
-	header( 'Location:' . $result->payment_url );
+	if ( ! headers_sent ) {
+		header( 'Location:' . $result->payment_url );
+	} else {
+		echo '<script>window.location.href=\'' . $result->payment_url . '\';</script>';
+	}
+
 } else {
 	echo 'خطا : ' . $result->message;
 }
